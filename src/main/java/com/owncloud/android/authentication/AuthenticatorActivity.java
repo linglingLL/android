@@ -1138,9 +1138,8 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
                 finish();
             }
         } else {
-            int failedStatusText = result.getCode() == ResultCode.MAINTENANCE_MODE ?
-                    R.string.maintenance_mode : R.string.auth_fail_get_user_name;
-            updateFailedAuthStatusIconAndText(failedStatusText);
+            int statusText = result.getCode() == ResultCode.MAINTENANCE_MODE ? R.string.maintenance_mode : R.string.auth_fail_get_user_name;
+            updateStatusIconFailUserName(statusText);
             showAuthStatus();
             Log_OC.e(TAG, "Access to user name failed: " + result.getLogMessage());
         }
@@ -1421,9 +1420,9 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity
     }
 
 
-    private void updateFailedAuthStatusIconAndText(int failedStatusText){
+    private void updateStatusIconFailUserName(int statusText){
         mAuthStatusIcon = R.drawable.ic_alert;
-        mAuthStatusText = failedStatusText;
+        mAuthStatusText = statusText;
     }
 
     private void updateServerStatusIconNoRegularAuth() {
